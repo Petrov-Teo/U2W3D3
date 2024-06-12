@@ -20,7 +20,7 @@
         crossorigin="anonymous"></script>
     <script>
         // Funzione per recuperare i libri
-
+        const saveArray = [];
         const fetchBooks = () => {
             fetch("https://striveschool-api.herokuapp.com/books")
                 .then((responseBooks) => {
@@ -33,6 +33,9 @@
                 .then((books) => {
                     console.log(books);
                     const row = document.getElementById('divBox')
+
+
+
 
                     books.forEach((book) => {
                         const col = document.createElement("div")
@@ -60,13 +63,21 @@
                         const btnAddlist = document.createElement("button")
                         btnAddlist.classList.add("btn", "btn-primary")
                         btnAddlist.innerText = "Save"
-                        btnAddlist.addEventListener("onclick", function (event) {
-                            console.log(event.target)
+
+
+
+                        btnAddlist.addEventListener("click", (event) => {
+                            saveArray.push(book.title, book.price)
+                            console.log(saveArray)
                         })
+
 
                         const btnDelite = document.createElement("button")
                         btnDelite.classList.add("btn", "btn-danger", "mx-3")
                         btnDelite.innerText = "Delete"
+                        btnDelite.addEventListener("click", (event) => {
+                            event.target.parentElement.parentElement.parentElement.remove()
+                        })
 
                         cardBody.appendChild(cardImg);
                         cardBody.appendChild(cardTitle);
