@@ -85,7 +85,11 @@
 
 
                         btnAddlist.addEventListener("click", (event) => {
-                            saveArray.push(book.title, book.price)
+                            const newBook = {
+                                title: book.title,
+                                price: book.price
+                            }
+                            saveArray.push(newBook)
                             console.log(saveArray)
                         })
 
